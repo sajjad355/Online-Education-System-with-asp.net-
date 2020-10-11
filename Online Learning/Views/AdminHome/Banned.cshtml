@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Online_Learning.Models.User>
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login");
+    }
+}
+@{
+    ViewBag.Title = "Banned";
+    Layout = "~/Views/Shared/_MyLayout2.cshtml";
+}
+<br />
+<br />
+<h2>Banned</h2>
+
+
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("UnBan", "UnBan", new { id = item.UserId }) |
+                
+            </td>
+        </tr>
+    }
+
+</table>

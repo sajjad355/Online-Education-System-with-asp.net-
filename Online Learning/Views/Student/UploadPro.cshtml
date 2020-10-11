@@ -1,0 +1,25 @@
+﻿@{
+
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login");
+    }
+    ViewBag.Title = "MyProfile";
+}
+@{
+    ViewBag.Title = "UploadPro";
+    Layout = "~/Views/Shared/_MyLayout3.cshtml";
+}
+<br />
+<br />
+<h2>Upload Profile Photo</h2>
+
+@using (Html.BeginForm("UploadPro", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <input type="file" name="file" value="" />
+        <input type="submit" value="Save" class="btn btn-default" />
+    </div>
+
+}

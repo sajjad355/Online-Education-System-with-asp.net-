@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Online_Learning.Models.Message>
+
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+@{
+    ViewBag.Title = "ShowMessage";
+    Layout = "~/Views/Shared/_MyLayout3.cshtml";
+}
+
+<br />
+<br />
+
+<!-- section -->
+<div class="section layout_padding padding_bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="heading_main text_align_center">
+                        <h2><span>Messages</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("New Message", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SenderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SenderType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceiverName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SenderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SenderType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiverName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.MessageId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.MessageId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.MessageId })
+                </td>*@
+        </tr>
+    }
+
+</table>

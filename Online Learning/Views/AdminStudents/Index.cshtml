@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Online_Learning.Models.OnlineStudent>
+
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+
+@{
+    Layout = "~/Views/Shared/_MyLayout2.cshtml";
+}
+<br />
+<br />
+
+
+<!-- section -->
+<div class="section layout_padding padding_bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="heading_main text_align_center">
+                        <h2><span>Student List</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section -->
+
+
+<table class="table table-striped" border="2">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            @* <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StdInstitute)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:darkred">No Match With Any Student</td>
+            </tr>
+        }
+        else
+        {
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentName)
+                    </td>
+                    @*  <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MobileNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StdInstitute)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<br />
+@using (Html.BeginForm())
+{
+    <div class="heading_main text_align_center">
+        @Html.AntiForgeryToken()
+        @Html.TextBox("searching")<input type="submit" value="Search" />
+    </div>
+}
+<br />
+<p>
+    @Html.ActionLink("Add Student", "Create") <br />
+    @Html.ActionLink("Feedback", "Create/", "AdminMessages")
+</p>

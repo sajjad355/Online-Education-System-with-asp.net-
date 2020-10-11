@@ -1,0 +1,33 @@
+﻿@model Online_Learning.Models.User
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+</head>
+<body>
+    <h2>Admin Dashboard!!!</h2>
+    <aside>
+        <nav>
+            <ul id="menu">
+                <li>@Html.ActionLink("Profile", "Profile/", "AdminHome")</li>
+                <li>@Html.ActionLink("Students List", "Students/", "AdminHome")</li>
+                <li>@Html.ActionLink("Teachers List", "Teachers/", "AdminHome")</li>
+                <li>@Html.ActionLink("All Courses", "Courses/", "AdminHome")</li>
+                <li>@Html.ActionLink("Logout", "Logout/", "Login")</li>
+            </ul>
+        </nav>
+    </aside>
+</body>
+</html>

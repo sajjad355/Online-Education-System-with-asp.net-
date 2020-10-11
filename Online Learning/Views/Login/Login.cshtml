@@ -1,0 +1,55 @@
+﻿@model Online_Learning.Models.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout1.cshtml";
+}
+<br />
+<br />
+
+<!-- section -->
+<div class="section layout_padding padding_bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="heading_main text_align_center">
+                        <h2><span>Login</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section -->
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="container">
+    <div class="heading_main text_align_center">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="container">
+            <label for="Username"><b>Username</b></label> 
+            <input type="text" placeholder="Enter Username" name="Username" required>
+            <br />
+            <label for="Password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="Password" required>
+
+            <div class="form-group">
+                <div class="heading_main text_align_center">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Login" class="btn btn-default" />
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>@ViewBag.Error</p>
+                <p>@ViewBag.Ban</p>
+            </div>
+    </div>
+   </div>
+  </div>
+    }

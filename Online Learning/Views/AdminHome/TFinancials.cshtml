@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Online_Learning.Models.TeacherFinancial>
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+@{
+    ViewBag.Title = "TFinancials";
+    Layout = "~/Views/Shared/_MyLayout2.cshtml";
+}
+<br />
+<br />
+<h2>Spends</h2>
+
+
+<div style="text-align:right">@Html.ActionLink("Print Spending Report", "PrintFin")</div>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+
+        </tr>
+    }
+
+</table>
+<p>Total Spends: @ViewBag.TMsg</p>
+<p>Total Profit: @ViewBag.Profit</p>

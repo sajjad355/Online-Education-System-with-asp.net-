@@ -1,0 +1,75 @@
+﻿@model Online_Learning.Models.Subject
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <h1>COURSE DETAILS</h1>
+</head>
+<body>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SubjectName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubjectName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TeacherId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TeacherId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubjectType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubjectType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="">
+                @Html.ActionLink("Logout", "Logout/", "Login") | @Html.ActionLink("Back", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

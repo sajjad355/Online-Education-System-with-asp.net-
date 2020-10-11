@@ -1,0 +1,71 @@
+﻿@model Online_Learning.Models.CoursesOfStudent
+
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login");
+    }
+} 
+
+@{
+    ViewBag.Title = "Enroll";
+    Layout = "~/Views/Shared/_MyLayout3.cshtml";
+}
+
+
+<br /><br />
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Enroll</title>
+</head>
+<body>
+    <h3>Are you sure?</h3>
+    <div>
+        <h4>Adding Course</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StudentName)
+            </dd>
+
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.MyMaterial.MaterialName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MyMaterial.MaterialName)
+                </dd>*@
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Enroll" class="btn btn-default" /> |
+                @Html.ActionLink("Back", "AllCourses/")
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+

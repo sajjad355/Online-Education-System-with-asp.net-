@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Online_Learning.Models.User>
+
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login");
+    }
+}
+
+@{
+    ViewBag.Title = "AllUser";
+    Layout = "~/Views/Shared/_MyLayout2.cshtml";
+}
+<br />
+<br />
+<h2>All Users</h2>
+@Html.ActionLink("Banned Users", "Banned")
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.UserType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+         @*   <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.UserType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Ban", "Ban", new { id = item.UserId }) |
+
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.UserId })*@
+            </td>
+        </tr>
+    }
+
+</table>
+

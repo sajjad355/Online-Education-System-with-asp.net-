@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Online_Learning.Models.Teacher>
+
+@{
+
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login");
+    }
+    ViewBag.Title = "MyProfile";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br />
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MyProfile</title>
+</head>
+<body>
+  
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Institute)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ImageFile)
+                </th>*@
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <div align="center">
+                <img width="220" height="220" src="~/Uploaded/ProImage/@item.ImageName">
+            </div>
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Institute)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "EditProfile", new { id = item.TeacherId })
+                </td>
+                <td>
+                    @Html.ActionLink("Upload Pro Pic", "UploadPro", new { id = item.TeacherId })
+                </td>
+            </tr>
+
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("Back to Home Page ", "Index")
+    </div>
+</body>
+</html>

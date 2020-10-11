@@ -1,0 +1,63 @@
+﻿
+@{
+
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login");
+    }
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+
+        <!-- Start Banner -->
+        <div class="ulockd-home-slider">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="pogoSlider" id="js-main-slider">
+                        <div class="full float-right_img">
+                            <img src=@Url.Content("/Content/images/banner_img.png") alt="#">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Banner -->
+        <script src="~/Scripts/chart/exporting.js"></script>
+        <script src="~/Scripts/chart/highcharts.js"></script>
+        <div class="jumbotron">
+            <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        </div>
+        @*<h1>Welcome to Teacher Dashboard</h1>*@
+        <!--<aside>
+        <nav>
+            <ul id="menu">-->
+        @* <li>@Html.ActionLink(" My Profile", "MyProfile/", "TeacherHome")</li>
+
+
+        <li>@Html.ActionLink(" All Student List", "AllStudents/", "TeacherHome")</li>
+
+        <li>@Html.ActionLink(" All Type of Courses", "ShowAllSubject/", "TeacherHome")</li>
+
+        <li>@Html.ActionLink("My Courses ", "ShowMySubject/", "TeacherHome")</li>*@
+
+
+        <!--</ul>
+        </nav>
+    </aside>-->
+
+    </div>
+</body>
+</html>

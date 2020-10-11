@@ -1,0 +1,99 @@
+﻿@model Online_Learning.Models.Teacher
+
+@{
+    Layout = null;
+}
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>DETAILS OF TEACHER</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TeacherName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TeacherName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Salary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Salary)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MobileNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MobileNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Institute)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Institute)
+            </dd>
+
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.JoiningDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.JoiningDate)
+                </dd>*@
+
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </dt>*@
+
+            @*   <dd>
+                    @Html.DisplayFor(model => model.Salary)
+                </dd>*@
+
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>*@
+
+        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="">
+                @Html.ActionLink("Logout", "Logout/", "Login") | @Html.ActionLink("Back", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

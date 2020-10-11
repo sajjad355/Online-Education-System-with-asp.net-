@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Online_Learning.Models.CoursesOfStudent>
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+@{
+    ViewBag.Title = "MyCourses";
+    Layout = "~/Views/Shared/_MyLayout3.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>My Courses</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        @*  <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            @*  <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseId)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
+            </td>
+            <td>
+                @Html.ActionLink("Notes", "Notes", new { id = item.CourseId }) |
+
+            </td>
+            <td>
+                @Html.ActionLink("Videos", "ShowVideo", new { id = item.CourseId }) |
+
+            </td>
+            @* <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.COSId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.COSId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.COSId })
+                </td>*@
+        </tr>
+    }
+
+</table>

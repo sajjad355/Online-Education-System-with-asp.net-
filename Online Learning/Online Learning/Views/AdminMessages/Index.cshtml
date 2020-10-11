@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Online_Learning.Models.Message>
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+
+@{
+    Layout = "~/Views/Shared/_MyLayout2.cshtml";
+}
+
+<br />
+<br />
+
+
+<!-- section -->
+<div class="section layout_padding padding_bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="heading_main text_align_center">
+                        <h2><span>Conversation</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section -->
+<p>
+    @Html.ActionLink("New Message", "Create")
+</p>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SenderName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SenderType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceiverName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:darkred">No Match With Any Sender</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SenderName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SenderType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReceiverName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Reply", "Edit", new { id = item.MessageId }) |
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MessageId })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+@using (Html.BeginForm())
+{
+    <div class="heading_main text_align_center">
+        @Html.AntiForgeryToken()
+        @Html.TextBox("searching")
+        <input type="submit" value="Search" />
+    </div>
+}

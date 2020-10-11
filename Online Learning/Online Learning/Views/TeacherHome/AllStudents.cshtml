@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Online_Learning.Models.OnlineStudent>
+@{
+
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login");
+    }
+    ViewBag.Title = "AllStudents";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllStudents</title>
+</head>
+<body>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.StudentName)*@
+                Students Name
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.MobileNo)*@
+                Students Contact no
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.StdInstitute)*@
+                Students Institute
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StdInstitute)
+                </td>
+
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("Back to Home Page ", "Index")
+    </div>
+    <div>
+        @Html.ActionLink("My Courses ", "ShowMySubject")
+    </div>
+</body>
+</html>

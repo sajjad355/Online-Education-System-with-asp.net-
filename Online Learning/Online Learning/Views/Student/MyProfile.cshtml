@@ -1,0 +1,73 @@
+﻿@model Online_Learning.Models.User
+
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+
+@{
+    Layout = "~/Views/Shared/_MyLayout3.cshtml";
+}
+<br />
+<br />
+
+
+<!-- section -->
+<div class="section layout_padding padding_bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="heading_main text_align_center">
+                        <h2><span>Profile Information</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section -->
+<div class="container">
+    <div class="heading_main text_align_center">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserType)
+            </dd>
+
+        </dl>
+
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="heading_main text_align_center">
+        @Html.ActionLink("Edit", "Edit/", "Student")
+    </div>
+    <div class="heading_main text_align_center">
+        @Html.ActionLink("Add More Info.", "StudentEdit/", "Student")
+    </div>
+}

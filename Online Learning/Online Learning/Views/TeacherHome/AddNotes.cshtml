@@ -1,0 +1,23 @@
+﻿@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+@{
+    ViewBag.Title = "Add Notes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Upload Notes</h2>
+
+
+@using (Html.BeginForm("AddNotes", "TeacherHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <input type="file" name="file" value="" />
+        <input type="submit" name="name" value="Upload" />
+    </div>
+}

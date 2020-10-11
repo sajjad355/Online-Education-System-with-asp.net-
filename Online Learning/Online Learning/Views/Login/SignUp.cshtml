@@ -1,0 +1,59 @@
+﻿@model Online_Learning.Models.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout1.cshtml";
+}
+<br />
+<br />
+<!-- section -->
+<div class="section layout_padding padding_bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="heading_main text_align_center">
+                        <h2><span>Register</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section -->
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="heading_main text_align_center">
+            <div class="container">
+                <label for="Username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="Username" id="Username" required>
+                <br />
+                <label for="Email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="Email" id="Email" required>
+                <br />
+                <label for="Password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="Password" id="Password" required>
+                <br />
+                @*<label for="UserType"><b>User Type</b></label>
+        <input type="text" placeholder="Enter UserType" name="UserType" id="UserType" required>
+                *@
+            <label for="UserType"><b>User Type</b></label>
+            <select name="Usertype">
+                @*<option value="Admin">Admin</option>*@
+                <option value="Teacher">Teacher</option>
+                <option value="Student">Student</option>
+            </select>
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="heading_main text_align_center">
+                            <input type="submit" value="Register" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        }

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Online_Learning.Models.Video>
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+@{
+    ViewBag.Title = "ShowVideo";
+    Layout = "~/Views/Shared/_MyLayout3.cshtml";
+}
+<br />
+<br />
+<br />
+<h2 align="center">Videos</h2>
+
+@foreach (var m in Model)
+{
+    <h4 align="center">@m.VideoName</h4>
+    <h6 align="center">@m.VideoDescription</h6>
+    <div align="center">
+        <video width="520" height="480" controls>
+            <source src="~/Uploaded/Videos/@m.VideoName" type="video/mp4">
+        </video>
+
+    </div>
+
+}

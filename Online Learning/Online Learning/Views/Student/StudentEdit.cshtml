@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Online_Learning.Models.OnlineStudent>
+
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+
+@{
+    ViewBag.Title = "StudentEdit";
+    Layout = "~/Views/Shared/_MyLayout3.cshtml";
+}
+<br />
+<br />
+<h2>More Student Info</h2>
+@Html.ActionLink("Update Info", "CreateMore/", "Student")
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdInstitute)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        @* <th>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <div align="center">
+            <img width="220" height="220" src="~/Uploaded/ProImage/@item.ImageName">
+        </div>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StdInstitute)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            @* <td>
+                    @Html.DisplayFor(modelItem => item.ImageName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImagePath)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "EditMore", new { id = item.UserId }) |
+                @Html.ActionLink("Update Pro Pic", "UploadPro", new { id = item.UserId })
+
+            </td>
+        </tr>
+    }
+
+</table>

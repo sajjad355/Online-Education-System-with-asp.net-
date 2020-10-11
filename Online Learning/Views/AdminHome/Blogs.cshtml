@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Online_Learning.Models.MyMaterial>
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+@{
+    Layout = "~/Views/Shared/_MyLayout2.cshtml";
+}
+
+<br />
+<br />
+
+
+<!-- section -->
+<div class="section layout_padding padding_bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="heading_main text_align_center">
+                        <h2><span>Documents</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end section -->
+<div class="container">
+    <div class="heading_main text_align_center">
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaterialName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaterialType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaterialLink)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subject.SubjectName)
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaterialName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaterialType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaterialLink)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject.SubjectName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MaterialId })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+}
+

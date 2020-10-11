@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Online_Learning.Models.Registration>
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+@{
+    ViewBag.Title = "Financials";
+    Layout = "~/Views/Shared/_MyLayout2.cshtml";
+}
+<br /><br />
+<h2>Earnings</h2>
+
+<div style="text-align:right">@Html.ActionLink("Print Earnings Report", "PrintReg")</div>
+<div style="text-align:left">@Html.ActionLink("Spends", "TFinancials")</div>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject.SubjectName)
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.SubjectName)
+            </td>
+           
+        </tr>
+    }
+
+</table>
+<p>Total Earnings: @ViewBag.Msg</p>

@@ -1,0 +1,104 @@
+﻿@model Online_Learning.Models.OnlineStudent
+@{
+    if (Session["Username"] == null)
+    {
+        Response.Redirect("/Login/Login/");
+    }
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>DETAILS OF STUDENT</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StudentName)
+            </dd>
+
+            @*  <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MobileNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MobileNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StdInstitute)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StdInstitute)
+            </dd>
+
+            @*   <dt>
+                    @Html.DisplayNameFor(model => model.JoinDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.JoinDate)
+                </dd>*@
+
+            @*  <dt>
+                    @Html.DisplayNameFor(model => model.EnrolledCourse)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EnrolledCourse)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>*@
+
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.ImageFile)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ImageFile)
+                </dd>
+            *@
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Logout", "Logout/", "Login") |
+        @Html.ActionLink("Back", "Index")
+    </p>
+</body>
+</html>
